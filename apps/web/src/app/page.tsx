@@ -11,7 +11,7 @@ export default function Store() {
     <div className="container">
       <h1 className="title">
         Store <br />
-        <span>Kitchen Sink</span>
+        <span>Kitchen Sink Hello</span>
       </h1>
       <CounterButton />
       <p className="description">
