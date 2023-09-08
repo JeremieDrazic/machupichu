@@ -181,6 +181,9 @@ importers:
       jest-presets:
         specifier: workspace:*
         version: link:../jest-presets
+      prettier-config-custom:
+        specifier: workspace:^
+        version: link:../prettier-config-custom
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig
@@ -219,6 +222,9 @@ importers:
       jest-presets:
         specifier: workspace:*
         version: link:../jest-presets
+      prettier-config-custom:
+        specifier: workspace:^
+        version: link:../prettier-config-custom
       react:
         specifier: ^18.2.0
         version: 18.2.0

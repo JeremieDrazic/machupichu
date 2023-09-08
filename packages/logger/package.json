@@ -25,6 +25,7 @@
     "eslint-config-custom": "workspace:*",
     "jest": "^29.6.4",
     "jest-presets": "workspace:*",
+    "prettier-config-custom": "workspace:^",
     "tsconfig": "workspace:*",
     "typescript": "^5.2.2"
   }
