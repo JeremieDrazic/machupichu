@@ -1,5 +1,6 @@
 module.exports = {
-  extends: ["next", "turbo", "prettier"],
+  extends: ["next/core-web-vitals", "turbo", "./base.js", "plugin:prettier/recommended"],
+  ignorePatterns: ['node_modules', 'dist'],
   settings: {
     react: {
       version: "detect",
@@ -7,7 +8,7 @@ module.exports = {
   },
   parserOptions: {
     babelOptions: {
-      presets: [require.resolve("next/babel")],
+      presets: [require.resolve('next/babel')],
     },
   },
-};
+}

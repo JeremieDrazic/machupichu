@@ -6,15 +6,9 @@
     "apps",
     "packages"
   ],
-  "prettier.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": false,
+    "source.fixAll": true,
+    "source.fixAll.eslint": true,
     "source.organizeImports": true
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["eslint:recommended", "turbo"],
+  extends: ["eslint:recommended", "turbo", "./base.js", "plugin:prettier/recommended"],
   env: {
     node: true,
     es6: true,
@@ -15,5 +15,5 @@ module.exports = {
         jest: true,
       },
     },
-  ],
-};
+  ]
+}
