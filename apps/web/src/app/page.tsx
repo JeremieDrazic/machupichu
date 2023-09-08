@@ -6,6 +6,7 @@ export const metadata = {
 };
 
 export default function Store() {
+  const hello = "toto"
   log("Hey! This is Home.");
   return (
     <div className="container">
