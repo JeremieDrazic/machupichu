@@ -5,6 +5,9 @@ module.exports = {
     react: {
       version: "detect",
     },
+    next: {
+      rootDir: 'apps/web/',
+    },
   },
   parserOptions: {
     babelOptions: {

@@ -1,5 +1,6 @@
 import { log } from 'logger'
 import { CounterButton, NewTabLink } from 'ui'
+import { toto } from './toto'
 
 export const metadata = {
   title: 'Store | Kitchen Sink',
@@ -7,6 +8,7 @@ export const metadata = {
 
 export default function Store() {
   log('Hey! This is Home.')
+  toto()
   return (
     <div className="container">
       <h1 className="title">
