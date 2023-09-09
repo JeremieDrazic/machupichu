@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build": "storybook build",
     "lint": "eslint ./stories/*.stories.tsx",
     "preview-storybook": "serve storybook-static"
   },
