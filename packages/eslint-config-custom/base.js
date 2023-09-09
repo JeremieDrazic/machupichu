@@ -33,5 +33,8 @@ module.exports = {
     'out/',
     'dist/',
     'build/',
+    '.turbo',
+    '.next',
+    'public'
   ]
 }

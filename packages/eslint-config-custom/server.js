@@ -1,5 +1,6 @@
 module.exports = {
   extends: ["eslint:recommended", "turbo", "./base.js", "plugin:prettier/recommended"],
+  plugins: ['import'],
   env: {
     node: true,
     es6: true,
