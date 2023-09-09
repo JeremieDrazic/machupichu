@@ -1,17 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Storybook",
   "extends": "./base.json",
-  "Display": "Vite",
   "compilerOptions": {
-    "allowJs": false,
-    "esModuleInterop": false,
-    "jsx": "react",
+    "allowJs": true,
+    "declaration": false,
+    "declarationMap": false,
+    "incremental": true,
+    "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "ESNext",
+    "module": "esnext",
     "noEmit": true,
     "resolveJsonModule": true,
-    "skipLibCheck": false,
-    "target": "ESNext",
-    "types": ["vite/client"]
+    "target": "es5"
   }
 }
