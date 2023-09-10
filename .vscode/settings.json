@@ -4,6 +4,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.workingDirectories": [
     "apps",
+    "apps/storybook",
     "packages"
   ],
   "editor.codeActionsOnSave": {
