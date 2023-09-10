@@ -23,9 +23,11 @@
     "@storybook/react-vite": "^7.4.0",
     "@storybook/testing-library": "^0.2.0",
     "eslint-config-custom": "workspace:^",
+    "prettier-config-custom": "workspace:^",
     "serve": "^14.2.1",
     "storybook": "^7.4.0",
     "tsconfig": "workspace:^",
     "typescript": "^5.2.2"
-  }
+  },
+  "prettier": "prettier-config-custom"
 }

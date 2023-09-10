@@ -36,5 +36,6 @@
   },
   "dependencies": {
     "react-dom": "^18.2.0"
-  }
+  },
+  "prettier": "prettier-config-custom"
 }

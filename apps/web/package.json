@@ -28,5 +28,6 @@
     "prettier-config-custom": "workspace:^",
     "tsconfig": "workspace:*",
     "typescript": "^5.2.2"
-  }
+  },
+  "prettier": "prettier-config-custom"
 }
