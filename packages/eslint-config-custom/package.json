@@ -5,13 +5,11 @@
   "license": "MIT",
   "dependencies": {
     "@vercel/style-guide": "^5.0.1",
-    "eslint-config-import": "^0.13.0",
     "eslint-config-next": "^13.4.1",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-turbo": "^1.9.3",
     "eslint-plugin-mdx": "^2.2.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-react": "7.33.2",
     "eslint-plugin-storybook": "^0.6.13",
     "next": "^13.4.19"
   },

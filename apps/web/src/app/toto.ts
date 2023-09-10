@@ -1,1 +1,3 @@
-export const toto = () => console.log('toto')
+export const toto: () => void = () => {
+  console.log('toto');
+};

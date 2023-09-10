@@ -1,16 +1,45 @@
+const { resolve } = require("node:path");
+
+const project = resolve(process.cwd(), "tsconfig.json");
+
+/*
+ * This is a custom ESLint configuration for use with
+ * Next.js apps.
+ *
+ * This config extends the Vercel Engineering Style Guide.
+ * For more information, see https://github.com/vercel/style-guide
+ *
+ */
+
 module.exports = {
-  extends: ["next/core-web-vitals", "turbo", "./base.js", "plugin:prettier/recommended"],
-  settings: {
-    react: {
-      version: "detect",
-    },
-    next: {
-      rootDir: 'apps/web/',
-    },
-  },
+  extends: [
+    ...[
+      "@vercel/style-guide/eslint/node",
+      "@vercel/style-guide/eslint/typescript",
+      "@vercel/style-guide/eslint/browser",
+      "@vercel/style-guide/eslint/react",
+      "@vercel/style-guide/eslint/next",
+      "eslint-config-turbo",
+    ].map(require.resolve),
+    "./base.js",
+    "plugin:prettier/recommended"
+  ],
   parserOptions: {
-    babelOptions: {
-      presets: [require.resolve('next/babel')],
+    project,
+  },
+  globals: {
+    React: true,
+    JSX: true,
+  },
+  settings: {
+    "import/resolver": {
+      typescript: {
+        project,
+      },
+      node: {
+        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
+      },
     },
   },
+  ignorePatterns: ["node_modules/", "dist/"],
 }

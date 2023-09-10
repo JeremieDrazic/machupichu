@@ -3,14 +3,13 @@ module.exports = {
     "no-unused-vars": "off",
     "no-console": "warn",
 
-    "unicorn/filename-case": [
-      "error",
-      {
-        "cases": {
-          "camelCase": true,
-          "pascalCase": true
-        }
-      }
-    ]
+    "react/function-component-definition": "off",
+
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/await-thenable": "off",
+
+    "import/no-default-export": "off",
   }
 }
