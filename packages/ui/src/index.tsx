@@ -1,3 +1,3 @@
-export { CounterButton } from './CounterButton'
-export { NewTabLink } from './NewTabLink'
+export { CounterButton } from './CounterButton';
+export { NewTabLink } from './NewTabLink';
 

@@ -1,4 +1,3 @@
-import { log } from 'logger';
 import { CounterButton, NewTabLink } from 'ui';
 import { toto } from './toto';
 
@@ -7,7 +6,6 @@ export const metadata = {
 };
 
 const Store: () => JSX.Element = () => {
-  log('Hey! This is Home.');
   toto();
   return (
     <div className="container">

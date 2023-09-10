@@ -32,11 +32,13 @@ module.exports = {
       typescript: {
         project,
       },
+      node: {
+        extensions: [".mjs", ".js", ".jsx", ".ts", ".tsx"],
+      },
     },
   },
   ignorePatterns: ["node_modules/", "dist/", ".eslintrc.js", "**/*.css"],
-  // add rules configurations here
   rules: {
-    "import/no-default-export": "off",
-  },
+    "unicorn/filename-case": "off"
+  }
 }
