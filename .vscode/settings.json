@@ -6,9 +6,7 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.workingDirectories": [
-    "apps/web",
-    "apps/storybook",
-    "packages/ui"
+    "src",
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
