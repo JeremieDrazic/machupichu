@@ -25,17 +25,9 @@ export const CounterButton: () => JSX.Element = () => {
       </p>
       <div>
         <button
+          className="inline-block cursor-pointer rounded-md border-none bg-black px-4 py-2 text-white"
           onClick={() => {
             setCount((c) => c + 1);
-          }}
-          style={{
-            background: 'black',
-            color: 'white',
-            border: 'none',
-            padding: '0.5rem 1rem',
-            borderRadius: '0.25rem',
-            display: 'inline-block',
-            cursor: 'pointer',
           }}
           type="button"
         >

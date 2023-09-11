@@ -1,3 +1,7 @@
-export { CounterButton } from './CounterButton';
-export { NewTabLink } from './NewTabLink';
+// styles
+import './styles.css';
+
+// components
+export * from './CounterButton';
+export * from './NewTabLink';
 

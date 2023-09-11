@@ -14,5 +14,5 @@ const overridableDefaults = {
 module.exports = {
   ...overridableDefaults,
   singleQuote: true,
-  plugins: ['prettier-plugin-packagejson'],
+  plugins: ['prettier-plugin-tailwindcss'],
 }
