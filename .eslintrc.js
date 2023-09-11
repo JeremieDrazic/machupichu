@@ -39,18 +39,24 @@ module.exports = {
       },
     },
   },
-  ignorePatterns: ['node_modules/', 'dist/'],
+  ignorePatterns: ['node_modules/', 'dist/', 'storybook-static/'],
   rules: {
-    'no-unused-vars': 'off',
     'no-console': 'warn',
+    'no-unused-vars': 'off',
+    'import/no-extraneous-dependencies': 'off',
 
     'react/function-component-definition': 'off',
 
-    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
-    '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unsafe-call': 'off',
     '@typescript-eslint/await-thenable': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/prefer-ts-expect-error': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
 
     'import/no-default-export': 'off',
+
+    'unicorn/filename-case': 'off',
   },
 };
