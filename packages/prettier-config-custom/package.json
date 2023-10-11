@@ -1,0 +1,13 @@
+{
+  "name": "prettier-config-custom",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "prettier-plugin-tailwindcss": "^0.5.5"
+  }
+}

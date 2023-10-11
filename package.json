@@ -1,7 +1,9 @@
 {
+  "name": "machupichu",
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "clean": "turbo clean",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
@@ -13,5 +15,7 @@
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.6.10",
-  "name": "machupichu"
+  "dependencies": {
+    "next": "13.5.4"
+  }
 }
