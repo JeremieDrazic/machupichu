@@ -15,5 +15,8 @@
     "tsconfig": "workspace:^",
     "typescript": "^5.2.2"
   },
-  "prettier": "prettier-config-custom"
+  "prettier": "prettier-config-custom",
+  "dependencies": {
+    "puppeteer": "^21.3.8"
+  }
 }

@@ -35,4 +35,7 @@ module.exports = {
     },
   },
   ignorePatterns: ["node_modules/"],
-};
+  rules: {
+    'no-console': 'off',
+  }
+}

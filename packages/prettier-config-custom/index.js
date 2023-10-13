@@ -7,7 +7,7 @@
 const overridableDefaults = {
   endOfLine: 'lf',
   tabWidth: 2,
-  printWidth: 80,
+  printWidth: 100,
   useTabs: false,
 }
 
@@ -15,5 +15,7 @@ module.exports = {
   ...overridableDefaults,
   singleQuote: true,
   semi: false,
+  bracketSameLine: false,
+  arrowParens: 'avoid',
   plugins: ['prettier-plugin-tailwindcss'],
 }
