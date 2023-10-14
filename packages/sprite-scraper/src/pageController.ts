@@ -1,5 +1,6 @@
+import type { BrowserType } from './types'
 import { pixelIconsSpriteScraper } from './scrapers/pixelIconsSpriteScraper'
-import type { BrowserType } from './utils/types'
+import { downloadImages } from './utils/downloadImages'
 
 type ScrapeAllSignature = (browserInstance: Promise<BrowserType>) => Promise<void>
 
@@ -9,7 +10,7 @@ const scrapeAll: ScrapeAllSignature = async browserInstance => {
   try {
     browser = await browserInstance
     const pixelIcons = await pixelIconsSpriteScraper.scraper(browser)
-    console.log(pixelIcons, pixelIcons?.length)
+    await downloadImages(pixelIcons)
   } catch (error) {
     console.log('Could not resolve the browser instance => ', error)
   }

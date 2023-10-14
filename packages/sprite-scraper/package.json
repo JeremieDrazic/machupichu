@@ -17,6 +17,9 @@
   },
   "prettier": "prettier-config-custom",
   "dependencies": {
-    "puppeteer": "^21.3.8"
+    "axios": "^1.5.1",
+    "mkdirp": "^3.0.1",
+    "puppeteer": "^21.3.8",
+    "utils": "workspace:^"
   }
 }

@@ -1,8 +1,10 @@
-import type { BrowserType, ScraperObjType, SpriteCollectionType } from '../utils/types'
+import { getLastPartOfString, padWithLeadingZeros } from 'utils'
+import type { BrowserType, ScraperObjType, SpriteObject } from '../types'
 
 export const PIXEL_ICON_SPRITE_URL = 'https://pokemondb.net/sprites'
 export const PIXEL_ICON_MAIN_DOM_SELECTOR = '#main'
 export const PIXEL_ICON_IMG_DOM_SELECTOR = '#main img.icon-pkmn'
+export const PIXEL_ICON_FILE_PREFIX = 'pixel-icon-'
 
 export const pixelIconsSpriteScraper: ScraperObjType = {
   url: PIXEL_ICON_SPRITE_URL,
@@ -17,15 +19,29 @@ export const pixelIconsSpriteScraper: ScraperObjType = {
     await page?.waitForSelector(PIXEL_ICON_MAIN_DOM_SELECTOR)
 
     // get sprite urls
-    const sprites: SpriteCollectionType | undefined = await page?.$$eval(
+    const sprites: SpriteObject[] = (await page?.$$eval(
       PIXEL_ICON_IMG_DOM_SELECTOR,
-      (imgElements: HTMLImageElement[]) => {
-        return imgElements.map(image => ({ url: image.src, filename: '' }))
-      },
-    )
+      (imgElements: HTMLImageElement[]) =>
+        imgElements.map((image, index) => ({
+          filePath: '',
+          url: image.src,
+          index: index + 1,
+        })),
+    )) || [{ filePath: '', url: '', index: 0 }]
 
+    // close the browser
     await browser?.close()
 
-    return sprites
+    if (sprites.find(({ index }) => index === 0)) {
+      throw new Error('Failed to extract sprite URLs')
+    }
+
+    return sprites.map(({ url, index }) => ({
+      url,
+      index,
+      filePath: `sprites/${padWithLeadingZeros(
+        index,
+      )}/${PIXEL_ICON_FILE_PREFIX}${padWithLeadingZeros(index)}.${getLastPartOfString(url, '.')}`,
+    }))
   },
 }

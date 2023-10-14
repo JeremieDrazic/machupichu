@@ -1,0 +1,12 @@
+{
+  "name": "utils",
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-custom": "workspace:^",
+    "prettier-config-custom": "workspace:^",
+    "tsconfig": "workspace:^"
+  },
+  "prettier": "prettier-config-custom"
+}
