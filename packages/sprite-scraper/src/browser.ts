@@ -8,7 +8,7 @@ export const startBrowser = async (): Promise<BrowserType> => {
     console.log('Opening the browser...')
 
     browser = await launch({
-      // headless: 'new',
+      // headless: false,
       headless: 'new',
       args: ['--disable-setuid-sandbox'],
       ignoreHTTPSErrors: true,

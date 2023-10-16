@@ -1,10 +1,10 @@
 import { getLastPartOfString, padWithLeadingZeros } from 'utils'
-import type { BrowserType, ScraperObjType, SpriteObject } from '../types'
+import type { BrowserType, ScraperObjType, SpriteObject } from '../../types'
 
-export const PIXEL_ICON_SPRITE_URL = 'https://pokemondb.net/sprites'
-export const PIXEL_ICON_MAIN_DOM_SELECTOR = '#main'
-export const PIXEL_ICON_IMG_DOM_SELECTOR = '#main img.icon-pkmn'
-export const PIXEL_ICON_FILE_PREFIX = 'pixel-icon-'
+const PIXEL_ICON_SPRITE_URL = 'https://pokemondb.net/sprites'
+const PIXEL_ICON_MAIN_DOM_SELECTOR = '#main'
+const PIXEL_ICON_IMG_DOM_SELECTOR = '#main img.icon-pkmn'
+const PIXEL_ICON_FILE_PREFIX = 'pixel-icon-'
 
 export const pixelIconsSpriteScraper: ScraperObjType = {
   url: PIXEL_ICON_SPRITE_URL,
@@ -35,6 +35,8 @@ export const pixelIconsSpriteScraper: ScraperObjType = {
     if (sprites.find(({ index }) => index === 0)) {
       throw new Error('Failed to extract sprite URLs')
     }
+
+    await page?.close()
 
     return sprites.map(({ url, index }) => ({
       url,
