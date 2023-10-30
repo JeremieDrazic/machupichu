@@ -29,9 +29,6 @@ export const pixelIconsSpriteScraper: ScraperObjType = {
         })),
     )) || [{ filePath: '', url: '', index: 0 }]
 
-    // close the browser
-    await browser?.close()
-
     if (sprites.find(({ index }) => index === 0)) {
       throw new Error('Failed to extract sprite URLs')
     }

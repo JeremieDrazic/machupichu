@@ -10,3 +10,11 @@ export type ScraperObjType = {
   url: string
   scraper: (browser: BrowserType) => Promise<SpriteObject[]>
 }
+export type EmptyScraperOptionsType = {
+  prefix: string
+  nbPkmns: number
+  getSpriteUrl: (nb: number) => string
+}
+export type EmptyScraperObjType = {
+  scraper: (options: EmptyScraperOptionsType) => SpriteObject[]
+}

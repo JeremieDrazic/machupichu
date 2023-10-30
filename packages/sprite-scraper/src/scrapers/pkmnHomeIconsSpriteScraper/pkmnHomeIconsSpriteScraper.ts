@@ -8,6 +8,8 @@ const PKMN_HOME_ICONS_MAIN_DOM_SELECTOR = '#mw-category-media'
 const PKMN_HOME_ICONS_NEXT_PAGE_DOM_SELECTOR =
   '#mw-category-media a[title="Category:HOME menu sprites"]'
 const PKMN_HOME_ICONS_SPRITE_IMG_DOM_SELECTOR = 'a.image img'
+const TOTAL_PAGE_COUNT = 7
+const PKMN_HOME_ICON_FILE_PREFIX = 'pkmn-home-icon-'
 
 type CreatePageSignature = (browser: BrowserType, url: string) => Promise<Page | undefined>
 const createPage: CreatePageSignature = async (browser, url) => {
@@ -25,24 +27,25 @@ const createPage: CreatePageSignature = async (browser, url) => {
 
 type GetSpriteUrlsSignature = (
   page: Page | undefined,
+  currentPage: number,
   nextPageUrl: string,
-  spriteUrls: (string | null)[],
+  spriteUrls: (string | null | undefined)[],
   mainDOMSelector: string,
   nextPageDOMSelector: string,
-  domainUrl: string,
-) => Promise<(string | null)[]>
+) => Promise<(string | null | undefined)[]>
 const getSpriteUrls: GetSpriteUrlsSignature = async (
   page,
+  currentPage,
   nextPageUrl,
   spriteUrls,
   mainDOMSelector,
   nextPageDOMSelector,
-  domainUrl,
 ) => {
-  if (page === undefined || !nextPageUrl) return spriteUrls
+  if (page === undefined || currentPage > TOTAL_PAGE_COUNT) return spriteUrls
 
   try {
-    let pageSpriteUrls: (string | null)[] = spriteUrls
+    let nextPage = currentPage
+    let pageSpriteUrls: (string | null | undefined)[] = spriteUrls
 
     // Navigate to the page containing the sprites
     console.log(`Navigating to page: ${nextPageUrl}`)
@@ -73,23 +76,24 @@ const getSpriteUrls: GetSpriteUrlsSignature = async (
       },
     )
 
+    // Update the current page
+    nextPage++
+
     // Recursively call the function with the next URL
-    if (nextUrlFromLinkElements) {
-      const nextUrl = `${domainUrl}${nextUrlFromLinkElements}`
-      return getSpriteUrls(
-        page,
-        nextUrl,
-        pageSpriteUrls,
-        mainDOMSelector,
-        nextPageDOMSelector,
-        domainUrl,
-      )
-    }
+    const nextUrl = `${PKMN_HOME_ICONS_DOMAIN}${nextUrlFromLinkElements}`
+
+    return getSpriteUrls(
+      page,
+      nextPage,
+      nextUrl,
+      pageSpriteUrls,
+      mainDOMSelector,
+      nextPageDOMSelector,
+    )
   } catch (error) {
     console.error(`An error occurred while navigating: ${error}`)
+    return spriteUrls
   }
-
-  return spriteUrls
 }
 
 export const pkmnHomeIconsSpriteScraper: ScraperObjType = {
@@ -104,24 +108,33 @@ export const pkmnHomeIconsSpriteScraper: ScraperObjType = {
 
     const spriteUrls = await getSpriteUrls(
       firstPage,
+      1,
       PKMN_HOME_ICONS_SPRITE_URL_PAGE_1,
       [],
       PKMN_HOME_ICONS_MAIN_DOM_SELECTOR,
       PKMN_HOME_ICONS_NEXT_PAGE_DOM_SELECTOR,
-      PKMN_HOME_ICONS_DOMAIN,
     )
 
-    console.log(
-      spriteUrls.map(url => {
-        const folderName = getNationalNbFromString(url || '0000')
-        const fileName = ''
+    return spriteUrls.map((url, index) => {
+      if (!url)
         return {
-          url,
-          filePath: `sprites/${folderName}/${fileName}`,
+          url: '',
+          index,
+          filePath: '',
         }
-      }),
-    )
 
-    return []
+      const nationalNb = getNationalNbFromString(url || '0000')
+      const urlParts = url.split('-')
+      const lastUrlPart = urlParts[urlParts.length - 1]
+      const fileName = lastUrlPart.includes('Menu_HOME_')
+        ? `${PKMN_HOME_ICON_FILE_PREFIX}${nationalNb}.png`
+        : `${PKMN_HOME_ICON_FILE_PREFIX}${nationalNb}-${lastUrlPart}`
+
+      return {
+        url,
+        index,
+        filePath: `sprites/${nationalNb}/${fileName}`,
+      }
+    })
   },
 }

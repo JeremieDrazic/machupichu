@@ -1,5 +1,13 @@
 import type { BrowserType } from './types'
-import { pixelIconsSpriteScraper, pkmnHomeIconsSpriteScraper } from './scrapers'
+import {
+  pokeAPISpriteScraper,
+  pixelIconsSpriteScraper,
+  pkmnHomeIconsSpriteScraper,
+  pkmnHomeSpriteOptions,
+  pkmnHomeLargeSpriteOptions,
+  frontSpritesOptions,
+  officialSpritesOptions,
+} from './scrapers'
 import { downloadImages } from './utils/downloadImages'
 
 type ScrapeAllSignature = (browserInstance: Promise<BrowserType>) => Promise<void>
@@ -10,12 +18,28 @@ const scrapeAll: ScrapeAllSignature = async browserInstance => {
   try {
     browser = await browserInstance
     // pixel icon sprites
-    // const pixelIcons = await pixelIconsSpriteScraper.scraper(browser)
-    // await downloadImages(pixelIcons)
+    const pixelIcons = await pixelIconsSpriteScraper.scraper(browser)
+    await downloadImages(pixelIcons)
 
-    // pokemon home icon Sprites
+    // pokemon home icon sprites
     const pkmnHomeIcons = await pkmnHomeIconsSpriteScraper.scraper(browser)
-    console.log(pkmnHomeIcons)
+    await downloadImages(pkmnHomeIcons)
+
+    // pokemon home sprites
+    const pkmnHomeSprites = await pokeAPISpriteScraper.scraper(pkmnHomeSpriteOptions)
+    await downloadImages(pkmnHomeSprites)
+
+    // pokemon home large sprites
+    const pkmnHomeLargeSprites = await pokeAPISpriteScraper.scraper(pkmnHomeLargeSpriteOptions)
+    await downloadImages(pkmnHomeLargeSprites)
+
+    // pixel front sprites
+    const pixelFrontSprites = await pokeAPISpriteScraper.scraper(frontSpritesOptions)
+    await downloadImages(pixelFrontSprites)
+
+    // pixel front sprites
+    const officialSprites = await pokeAPISpriteScraper.scraper(officialSpritesOptions)
+    await downloadImages(officialSprites)
   } catch (error) {
     console.log('Could not resolve the browser instance => ', error)
   }
