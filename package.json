@@ -6,16 +6,17 @@
     "clean": "turbo clean",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
+    "update-libs": "pnpm up -i -r -L",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint": "^8.48.0",
+    "eslint": "^8.53.0",
     "prettier": "^3.0.3",
     "tsconfig": "workspace:*",
-    "turbo": "latest"
+    "turbo": "^1.10.16"
   },
   "packageManager": "pnpm@8.6.10",
   "dependencies": {
-    "next": "13.5.4"
+    "next": "14.0.2"
   }
 }
